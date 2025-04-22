@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>113互動程式設計期中考報告</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <style>
+        iframe#content-frame {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 80%; /* 寬度為視窗的 80% */
+            height: 80%; /* 高度為視窗的 80% */
+            transform: translate(-50%, -50%); /* 置中 */
+            background-color: transparent; /* 透明背景 */
+            border: none; /* 移除邊框 */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 添加陰影效果 */
+            display: none; /* 預設隱藏 iframe */
+            z-index: 1000; /* iframe 在第二層 */
+        }
+    </style>
+</head>
+<body>
+    <div class="circle-container"></div> <!-- 背景圓形容器 -->
+    <ul class="menu">
+        <li>首頁</li>
+        <li id="intro-option">自我介紹</li>
+        <li class="dropdown">
+            作品集
+            <ul class="submenu">
+                <li><a href="https://jjzst.github.io/2025-02-25/">第一週</a></li>
+                <li><a href="https://jjzst.github.io/20250304/">第二週</a></li>
+                <li><a href="https://jjzst.github.io/20250311/">第三週</a></li>
+                <li><a href="#">第四週</a></li>
+            </ul>
+        </li>
+        <li id="quiz-option">測驗卷</li>
+        <li><a href="https://cfchen58.synology.me/%E4%BA%92%E5%8B%95%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88/week7/20230329_093533.mp4" class="teaching-video">教學影片</a></li>
+    </ul>
+    <iframe id="content-frame" src="" frameborder="0"></iframe>
+    <div id="quiz-container" style="display: none;"></div> <!-- 測驗卷容器 -->
+    <div id="quiz-container"></div> <!-- 用於顯示測驗卷文字 -->
+    <div id="intro-container"></div> <!-- 用於顯示自我介紹文字 -->
+    <script>
+        // 子選單點擊功能
+        document.querySelectorAll('.submenu li a, .teaching-video').forEach(link => {
+            link.addEventListener('click', (event) => {
+    
+                const iframe = document.getElementById('content-frame');
+                const targetUrl = event.target.getAttribute('href'); // 獲取點擊的連結
+
+                if (targetUrl) {
+                    iframe.src = targetUrl; // 將 iframe 的 src 設置為點擊的連結
+                    iframe.style.display = 'block'; // 顯示 iframe
+                } else {
+                    console.warn("未提供有效的 href 屬性");
+                }
+            });
+        });
+    </script>
+</body>
+</html>

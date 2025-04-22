@@ -1,0 +1,142 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #FFECF5; /* 背景顏色 */
+}
+
+.menu {
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #ffffff;
+    width: 100%;
+    transform: translateY(-100%); /* 預設隱藏選單 */
+    transition: transform 0.3s ease; /* 平滑顯示/隱藏效果 */
+    z-index: 2000; /* 選單在最上層 */
+}
+
+.menu.visible {
+    transform: translateY(0); /* 顯示選單 */
+}
+
+.menu li {
+    font-size: 30px;
+    margin-left: 50px;
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: #fdceee;
+    color: #41012a;
+    position: relative;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.menu li:hover {
+    background-color: #ea8dba;
+    color: #41012a;
+}
+
+.submenu {
+    list-style: none;
+    margin: 0;
+    padding: 0; /* 移除子選單的內邊距 */
+    position: absolute;
+    top: 100%; /* 子選單緊貼父選單底部 */
+    left: 0; /* 確保子選單與父選單左邊對齊 */
+    background-color: #ffffff;
+    display: none; /* 初始隱藏子選單 */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 添加陰影效果 */
+}
+
+.dropdown:hover .submenu {
+    display: block; /* 滑鼠移入時顯示子選單 */
+}
+
+.submenu li {
+    font-size: 20px;
+    padding: 10px 20px; /* 添加內邊距 */
+    background-color: #f692c2; /* 子選單背景顏色 */
+    color: #30021f;
+    text-align: center; /* 文字置中對齊 */
+}
+
+.submenu li:hover {
+    background-color:#fdceee;
+    color: #5e0349;
+}
+
+.submenu li a {
+    text-decoration: none;
+    color: inherit;
+    white-space: nowrap; /* 禁止文字換行 */
+    display: block; /* 讓整個區域可點擊 */
+}
+
+iframe#content-frame {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 80%; /* 寬度為視窗的 80% */
+    height: 80%; /* 高度為視窗的 80% */
+    transform: translate(-50%, -50%); /* 置中 */
+    background-color: transparent; /* 透明背景 */
+    border: none; /* 移除邊框 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 添加陰影效果 */
+    display: none; /* 預設隱藏 iframe */
+    z-index: 1000; /* iframe 在第二層 */
+}
+
+.circle-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1; /* 背景圓形位於最底層 */
+    pointer-events: none; /* 禁止背景圓形攔截點擊事件 */
+}
+
+.circle {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.7;
+    transition: transform 0.2s ease; /* 平滑變化大小 */
+}
+
+#quiz-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Courier New', Courier, monospace; /* 打字機字體 */
+    font-size: 24px;
+    color: #333;
+    background-color: rgba(255, 255, 255, 0.9); /* 半透明背景 */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: none; /* 預設隱藏 */
+    z-index: 2000;
+}
+
+#intro-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: Arial, sans-serif;
+    font-size: 20px;
+    color: #333;
+    background-color: rgba(255, 255, 255, 0.9); /* 半透明背景 */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: none; /* 預設隱藏 */
+    z-index: 2000;
+}
